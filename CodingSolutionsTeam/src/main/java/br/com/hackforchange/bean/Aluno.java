@@ -1,12 +1,10 @@
 package br.com.hackforchange.bean;
 
-import java.util.Calendar;
-
 public class Aluno {
 
 	private int idAluno;
 	private String nome;
-	private Calendar dataNasc;
+	private String dataNasc;
 	private String endereco;
 	private String escola;
 	private String serie;
@@ -15,7 +13,7 @@ public class Aluno {
 		
 	}
 
-	public Aluno(int idAluno, String nome, Calendar dataNasc, String endereco, String escola, String serie) {
+	public Aluno(int idAluno, String nome, String dataNasc, String endereco, String escola, String serie) {
 		this.idAluno = idAluno;
 		this.nome = nome;
 		this.dataNasc = dataNasc;
@@ -40,11 +38,11 @@ public class Aluno {
 		this.nome = nome;
 	}
 
-	public Calendar getDataNasc() {
+	public String getDataNasc() {
 		return dataNasc;
 	}
 
-	public void setDataNasc(Calendar dataNasc) {
+	public void setDataNasc(String dataNasc) {
 		this.dataNasc = dataNasc;
 	}
 
