@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="pt-br">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <link rel="stylesheet" href="assets/styles.css">
+  <link rel="icon" href="img/codingsolutions.png" type="image/x-icon">
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="assets/script.js" defer></script>
+  <title>Vida+</title>
+</head>
+<body>
+  <header>
+      <nav class="nav-bar">
+        <div class="container-logo">
+          <img src="img/codingsolutions.jpg" class="logo" alt="Imagem do logo">
+          <p class="logo-titulo">Vida+</p>
+        </div>
+        <div class="nav-list">
+        <ul>
+          <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+          <li class="nav-item"><a href="formulario.html" class="nav-link">Formulário</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+      </div>
+      <div class="mobile-menu-icon">
+        <i onclick="menuShow()" class="fas fa-bars"></i>
+      </div>
+      </nav>
+
+      <div class="mobile-menu">
+        <ul>
+          <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
+          <li class="nav-item"><a href="formulario.html" class="nav-link">Formulário</a></li>
+          <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
+        </ul>
+
+
+  </header>
+  <main>
+    <section>
+        <h1>Vida+</h1>
+        <h2>Preencha o formulario</h2>
+        <form id="psicologoForm" onsubmit="enviarFormulario(event)">
+          <label for="nome">Nome:</label>
+          <input type="text" id="nome" name="nome" required><br><br>
+
+          <label for="idade">Idade:</label>
+          <input type="number" id="idade" name="idade" required><br><br>
+
+          <label for="instituicao">Instituição de Ensino:</label>
+          <input type="text" id="instituicao" name="instituicao" required><br><br>
+
+          
+
+          <div>
+          <label for="saudeMental">Como você se sente emocionalmente no seu dia a dia?</label>
+                <div>
+                    <span class="icon" onclick="responder('Estou bem')">😃 Estou bem</span>
+                    <span class="icon" onclick="responder('Me sinto triste')">😢 Me sinto triste</span>
+                </div>
+          </div>
+
+          <div>
+              <span class="icon">❤️</span>
+              <label for="ambienteFamiliar">Você se sente seguro e bem acolhido em sua casa?</label>
+              <textarea id="ambienteFamiliar" name="ambienteFamiliar"></textarea><br><br>
+          </div>
+
+          <div>
+              <span class="icon">🏠</span>
+              <label for="saneamentoBasico">Você tem acesso a água potável em sua casa?</label>
+              <textarea id="saneamentoBasico" name="saneamentoBasico"></textarea><br><br>
+          </div>
+          
+          <input type="submit" value="Enviar">
+      </form>
+    </section>
+</main>
+
+
+</body>
+</html>
