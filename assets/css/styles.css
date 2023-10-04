@@ -91,12 +91,19 @@ main {
 }
 
 section {
+  display: flex;
+  flex-direction: column;
   background-color: #F8FCFB;
   border-radius: 10px;
   box-shadow: 0px 0px 10px rgba(0, 0, 0, 0.1);
-  width: 90%; 
-  max-width: 90%; 
+  width: 50%;  
   margin: auto;
+  align-items: center
+
+}
+
+.content-container {
+  padding: 20px;
 }
 
 .content-title {
@@ -129,11 +136,26 @@ h2 {
 form {
   display: flex;
   flex-direction: column;
+  align-items: center;
+  text-align: center;
+  gap: 15px;
+}
+
+.form-container {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    text-align: start;
+}
+
+.form-container input {
+ width: 100%;
 }
 
 label {
   margin-bottom: 5px;
   color: #333; /* Cor escura para o texto do label */
+  align-self: flex-start;
 }
 
 input, textarea {
@@ -141,6 +163,7 @@ input, textarea {
   margin-bottom: 10px;
   border: 1px solid #ccc;
   border-radius: 5px;
+  height: auto;
 }
 
 .icon {
@@ -166,9 +189,60 @@ input[type="submit"]:hover {
   background-color: #008b8b; /* Cor turquesa escura ao passar o mouse */
 }
 
-/* Resolução e responsividade */
+button {
+  padding: 15px 20px;
+  font-size: 1rem;
+  cursor: pointer;
+  border-radius: 5px;
+  border: none;
+}
+
+button:hover {
+  background-color: #008b8b; /* Cor turquesa escura ao passar o mouse */
+}
+
+
+/* Estilos para as perguntas */
+
+.questions-section {
+  display: none;
+  flex-direction: column;
+  align-items: flex-start;
+  padding: 20px;
+  border: 1px solid #ccc;
+  margin-bottom: 20px;
+}
+
+.questions-section h2 {
+  margin-bottom: 10px;
+}
+
+.questions-section label {
+  display: block;
+  margin-bottom: 10px;
+}
+
+.questions-section .options label {
+  display: block;
+}
+
+.questions-section button {
+  margin-top: 10px;
+}
+
+/* Estilo para a mensagem de envio */
+#successMessage {
+  display: none;
+  color: green;
+  font-weight: bold;
+}
+
 
 @media screen and (max-width:730px){
+
+  section {
+    width: 400px;
+  }
 
     .nav-bar {
       padding: 1.5rem 4rem;
@@ -204,3 +278,5 @@ input[type="submit"]:hover {
       display: block;
     }
   }
+
+ 

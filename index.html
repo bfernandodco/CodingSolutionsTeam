@@ -6,80 +6,275 @@
   <link rel="stylesheet" href="assets/css/styles.css">
   <link rel="icon" href="img/codingsolutions.png" type="image/x-icon">
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.2/css/all.min.css">
+  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/jquery.inputmask/3.3.4/jquery.inputmask.bundle.min.js"></script>
   <script src="assets/js/script.js" defer></script>
   <title>Vida+</title>
 </head>
 <body>
   <header>
       <nav class="nav-bar">
-        <div class="container-logo">
-          <img src="img/codingsolutions.jpg" class="logo" alt="Imagem do logo">
+        <div class="container-logo"> <!-- container-logo -->
+          <img src="img/codingsolutions.jpg" class="logo" alt="Imagem logo do projeto Vida+, uma cidade englobada em tecnlogia">
           <p class="logo-titulo">Vida+</p>
-        </div>
-        <div class="nav-list">
+        </div> <!-- container-logo -->
+        <div class="nav-list"> <!-- nav-list -->
         <ul>
           <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
           <li class="nav-item"><a href="sobre.html" class="nav-link">Sobre</a></li>
           <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
         </ul>
-      </div>
-      <div class="mobile-menu-icon">
+      </div> <!-- nav-list -->
+      <div class="mobile-menu-icon"> <!-- mobile-menu-icon -->
         <i onclick="menuShow()" class="fas fa-bars"></i>
-      </div>
+      </div> <!-- mobile-menu-icon -->
       </nav>
 
-      <div class="mobile-menu">
+      <div class="mobile-menu"> <!-- mobile-menu -->
         <ul>
           <li class="nav-item"><a href="index.html" class="nav-link">Início</a></li>
           <li class="nav-item"><a href="formulario.html" class="nav-link">Formulário</a></li>
           <li class="nav-item"><a href="contato.html" class="nav-link">Contato</a></li>
         </ul>
-
+      </div> <!-- mobile-menu -->
 
   </header>
   <main>
     <section>
-        <div class="content-title">
+      <div class="content-title"> <!-- content-title -->
         <h1>Vida+</h1>
-        <h2>Preencha o formulario</h2>
+        <h2>Preencha o formulário</h2>
+      </div> <!-- content-title -->
+      <div class="content-container"> <!-- content-container -->
+  
+        <form id="dataForm" >
+          <div class="form-container"> <!-- form-container1-->
+            <label for="nome">Nome:</label>
+            <input type="text" id="name" name="name" required placeholder="Digite seu nome">
+          </div> <!-- form-container1-->
+          <div class="form-container date-container" > <!-- form-container2-->
+            <label for="nascimento">Data de nascimento:</label>
+            <input type="date" id="age" name="age" required >
+          </div> <!-- form-container2-->  
+          <div class="form-container"> <!-- form-container3-->
+            <label for="instituicao">Instituição de Ensino:</label>
+            <input type="text" id="school" name="school" required placeholder="Digite sua instituição de ensino">
+          </div> <!-- form-container3-->
+          <div class="form-container"> <!-- form-container4-->
+            <label for="telefone">Telefone:</label>
+            <input type="tel" id="phone" name="phone" placeholder="Digite seu telefone">
+          </div> <!-- form-container4-->
+          <button type="button" onclick="showNextSection()">Próximo</button>
+        </form>
+        <div class="questions-section" id="questions1">
+          <h2>Perguntas sobre Saúde Mental e Sociais (1/4):</h2>
+          <label for="question1">Você se sente...?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question1" value="Feliz"> Feliz
+            </label>
+            <label>
+              <input type="radio" name="question1" value="Triste"> Triste
+            </label>
+            <label>
+              <input type="radio" name="question1" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question1" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <label for="question2">Você se sente...?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question2" value="Feliz"> Feliz
+            </label>
+            <label>
+              <input type="radio" name="question2" value="Irritado"> Irritado
+            </label>
+            <label>
+              <input type="radio" name="question2" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question2" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <label for="question3">Você sente dificuldade para dormir?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question3" value="Sem sono"> Sem sono
+            </label>
+            <label>
+              <input type="radio" name="question3" value="Com sono"> Com sono
+            </label>
+            <label>
+              <input type="radio" name="question3" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question3" value="Não sei"> Não sei
+            </label>
+          </div>
+
+          <button id="backButtonquestions1" onclick="showPreviousSection('questions1')">Voltar</button>
+          <button type="button" onclick="showNextSection()">Próximo</button>
         </div>
-        <form id="psicologoForm" onsubmit="enviarFormulario(event)">
-          <label for="nome">Nome:</label>
-          <input type="text" id="nome" name="nome" required><br><br>
 
-          <label for="idade">Idade:</label>
-          <input type="number" id="idade" name="idade" required><br><br>
+        <div class="questions-section" id="questions2">
+          <h2>Perguntas sobre Saúde Mental e Sociais (2/4):</h2>
+          <label for="question4">Você tem se divertido com seus amigos e tem feito coisas que gosta?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question4" value="Desanimado"> Desanimado
+            </label>
+            <label>
+              <input type="radio" name="question4" value="Motivado"> Motivado
+            </label>
+            <label>
+              <input type="radio" name="question4" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question4" value="Não sei"> Não sei
+            </label>
 
-          <label for="instituicao">Instituição de Ensino:</label>
-          <input type="text" id="instituicao" name="instituicao" required><br><br>
-
-          
-
-          <div>
-          <label for="saudeMental">Como você se sente emocionalmente no seu dia a dia?</label>
-                <div>
-                    <span class="icon" onclick="responder('Estou bem')">😃 Estou bem</span>
-                    <span class="icon" onclick="responder('Me sinto triste')">😢 Me sinto triste</span>
-                </div>
           </div>
+          <label for="question5">Você tem se sentido sozinho e sem esperança?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question5" value="Medo"> Medo
+            </label>
+            <label>
+              <input type="radio" name="question5" value="Acolhido"> Acolhido
+            </label>
+            <label>
+              <input type="radio" name="question5" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question5" value="Não sei"> Não sei
+            </label>
 
-          <div>
-              <span class="icon">❤️</span>
-              <label for="ambienteFamiliar">Você se sente seguro e bem acolhido em sua casa?</label>
-              <textarea id="ambienteFamiliar" name="ambienteFamiliar"></textarea><br><br>
           </div>
+          <label for="question6">Você tem se sentido cansado ou com pouca energia?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question6" value="Indisposto"> Indisposto
+            </label>
+            <label>
+              <input type="radio" name="question6" value="Animado"> Animado
+            </label>
+            <label>
+              <input type="radio" name="question6" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question6" value="Não sei"> Não sei
+            </label>
 
-          <div>
-              <span class="icon">🏠</span>
-              <label for="saneamentoBasico">Você tem acesso a água potável em sua casa?</label>
-              <textarea id="saneamentoBasico" name="saneamentoBasico"></textarea><br><br>
           </div>
-          
-          <input type="submit" value="Enviar">
-      </form>
+          <button id="backButtonquestions2" onclick="showPreviousSection('questions2')">Voltar</button>
+          <button type="button" onclick="showNextSection()">Próximo</button>
+        </div>
+
+        <div class="questions-section" id="questions3">
+          <h2>Perguntas sobre Saúde Mental e Sociais (3/4):</h2>
+          <label for="question7">Você tem dificuldade para prestar atenção nas aulas da escola?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question7" value="Desatento"> Desatento
+            </label>
+            <label>
+              <input type="radio" name="question7" value="Focado"> Focado
+            </label>
+            <label>
+              <input type="radio" name="question7" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question7" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <label for="question8">Você sente que sua vida é divertida?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question8" value="Para baixo"> Para baixo
+            </label>
+            <label>
+              <input type="radio" name="question8" value="Para cima"> Para cima
+            </label>
+            <label>
+              <input type="radio" name="question8" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question8" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <label for="question9">Você tem se sentido preocupado?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question9" value="Pânico"> Pânico
+            </label>
+            <label>
+              <input type="radio" name="question9" value="Tranquilo"> Tranquilo
+            </label>
+            <label>
+              <input type="radio" name="question9" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question9" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <button id="backButtonquestions3" onclick="showPreviousSection('questions3')">Voltar</button>
+          <button type="button" onclick="showNextSection()">Próximo</button>
+        </div>
+
+        <div class="questions-section" id="questions4">
+          <h2>Perguntas sobre Saúde Mental e Sociais (4/4):</h2>
+          <label for="question10">Você tem sentido dores na barriga ou vontade de vomitar por estar preocupado?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question10" value="Nausea"> Nausea
+            </label>
+            <label>
+              <input type="radio" name="question10" value="Satisfeito"> Satisfeito
+            </label>
+            <label>
+              <input type="radio" name="question10" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question10" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <label for="question11">Você já pensou em se machucar?</label>
+          <div class="options">
+            <label>
+              <input type="radio" name="question11" value="Coração quebrado"> Coração quebrado
+            </label>
+            <label>
+              <input type="radio" name="question11" value="Braço forte"> Braço forte
+            </label>
+            <label>
+              <input type="radio" name="question11" value="Indiferente"> Indiferente
+            </label>
+            <label>
+              <input type="radio" name="question11" value="Não sei"> Não sei
+            </label>
+
+          </div>
+          <button id="backButtonquestions4" onclick="showPreviousSection('questions4')">Voltar</button>
+          <button type="button" onclick="displaySuccessMessage()">Finalizar</button>
+        </div>
+
+        <div class="questions-section" id="submitSection">
+          <h2>Dados coletados com sucesso!</h2>
+        </div>
+         <!-- Mensagem de envio -->
+  <div id="successMessage">
+    Dados enviados com sucesso!
+  </div>
+      </div>
     </section>
-</main>
-
-
+  </main>
 </body>
 </html>
