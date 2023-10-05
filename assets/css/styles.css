@@ -203,32 +203,47 @@ button:hover {
 
 
 /* Estilos para as perguntas */
-
 .questions-section {
   display: none;
   flex-direction: column;
   align-items: flex-start;
   padding: 20px;
-  border: 1px solid #ccc;
   margin-bottom: 20px;
+  justify-content: space-between; /* Adicionado para espaciar os botões */
 }
 
 .questions-section h2 {
   margin-bottom: 10px;
+  text-align: center; /* Centraliza o texto das perguntas */
 }
 
 .questions-section label {
   display: block;
-  margin-bottom: 10px;
+  margin-bottom: 20px; /* Aumenta a margem entre perguntas */
+  text-align: center; /* Centraliza o texto dos labels */
+}
+
+.questions-section .options {
+  display: flex;
+  justify-content: center; /* Centraliza as opções */
 }
 
 .questions-section .options label {
-  display: block;
+  display: flex;
+  flex-direction: column; /* Coloca as opções em coluna */
+  align-items: center; /* Centraliza verticalmente */
+  font-size: 40px;
 }
 
-.questions-section button {
-  margin-top: 10px;
+/* Estilo para botão proximo, voltar e finalizar */
+
+.questions-section .button-container {
+  display: flex;
+  justify-content: space-between;
+  width: 100%;
 }
+
+
 
 /* Estilo para a mensagem de envio */
 #successMessage {

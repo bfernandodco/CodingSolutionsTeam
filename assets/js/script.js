@@ -1,59 +1,51 @@
-//Menu 
+// Menu 
 function menuShow() {
   let menuMobile = document.querySelector('.mobile-menu');
   let icon = document.querySelector('.mobile-menu-icon i');
 
   if (menuMobile.classList.contains('open')) {
-      menuMobile.classList.remove('open');
-      icon.classList.remove('fa-xmark');
-      icon.classList.add('fa-bars');
+    menuMobile.classList.remove('open');
+    icon.classList.remove('fa-xmark');
+    icon.classList.add('fa-bars');
   } else {
-      menuMobile.classList.add('open');
-      icon.classList.remove('fa-bars');
-      icon.classList.add('fa-xmark');
+    menuMobile.classList.add('open');
+    icon.classList.remove('fa-bars');
+    icon.classList.add('fa-xmark');
   }
 }
 
-//Forms e questões
+// Forms e questões
 let currentSection = 'form';
 
 function showNextSection() {
   if (currentSection === 'form') {
-      const formInputs = document.querySelectorAll('#dataForm input[required]');
-      const answered = Array.from(formInputs).every(input => input.value !== '');
-      if (answered) {
-          currentSection = 'questions1';
-          hideElement('dataForm');
-          showElement('questions1');
-          setButtonText('nextButton', 'Próximo');
-          showElement(`backButton${currentSection}`);
-          smoothScrollTo('questions1');
-      } else {
-          alert('Por favor, responda a todas as perguntas.');
-      }
+    const formInputs = document.querySelectorAll('#dataForm input[required]');
+    const answered = Array.from(formInputs).every(input => input.value !== '');
+    if (answered) {
+      currentSection = 'questions1';
+      hideElement('dataForm');
+      showElement('questions1');
+      setButtonText('nextButton', 'Próximo');
+      showElement(`backButton${currentSection}`);
+      smoothScrollTo('questions1');
+    } else {
+      alert('Por favor, responda a todas as perguntas.');
+    }
   } else {
-      const currentQuestionInputs = document.querySelectorAll(`#${currentSection} input[type="radio"]:checked`);
-      const requiredQuestions = document.querySelectorAll(`#${currentSection} input[type="radio"][required]`);
-
-      if (currentQuestionInputs.length !== requiredQuestions.length) {
-          alert('Por favor, responda a todas as perguntas.');
-          return;
-      }
-
-      const sectionNumber = parseInt(currentSection.slice(-1));
-      if (sectionNumber < 4) {
-          currentSection = `questions${sectionNumber + 1}`;
-          hideElement(`questions${sectionNumber}`);
-          showElement(`questions${sectionNumber + 1}`);
-          setButtonText('nextButton', 'Próximo');
-          showElement(`backButton${currentSection}`);
-          smoothScrollTo(`questions${sectionNumber + 1}`);
-      } else {
-          hideElement('questions4');
-          showElement('submitSection');
-          showFinishButton();  // Mostra o botão "Finalizar"
-          alert('Dados enviados com sucesso!');
-      }
+    const sectionNumber = parseInt(currentSection.slice(-1));
+    if (sectionNumber < 6) {
+      currentSection = `questions${sectionNumber + 1}`;
+      hideElement(`questions${sectionNumber}`);
+      showElement(`questions${sectionNumber + 1}`);
+      setButtonText('nextButton', 'Próximo');
+      showElement(`backButton${currentSection}`);
+      smoothScrollTo(`questions${sectionNumber + 1}`);
+    } else {
+      hideElement('questions6');
+      showElement('submitSection');
+      showFinishButton();
+      displaySuccessMessage();  // Exibe a mensagem de sucesso
+    }
   }
 }
 
@@ -61,110 +53,95 @@ function showPreviousSection(sectionId) {
   hideElement(sectionId);
   const sectionNumber = parseInt(sectionId.slice(-1));
   if (sectionNumber === 1) {
-      currentSection = 'form';
-      showElement('dataForm');
+    currentSection = 'form';
+    showElement('dataForm');
   } else {
-      currentSection = `questions${sectionNumber - 1}`;
-      showElement(`questions${sectionNumber - 1}`);
+    currentSection = `questions${sectionNumber - 1}`;
+    showElement(`questions${sectionNumber - 1}`);
   }
   showElement(`backButton${currentSection}`);
   setButtonText('nextButton', 'Próximo');
   smoothScrollTo(currentSection);
 }
 
+function displaySuccessMessage() {
+  const successMessage = document.createElement('div');
+  successMessage.innerHTML = '<h2>Dados enviados com sucesso!</h2>';
+  successMessage.setAttribute('id', 'successMessage');  // Adiciona o ID para a mensagem
+  const submitSection = document.getElementById('submitSection');
+  submitSection.innerHTML = '';  // Limpa o conteúdo existente na div
+  submitSection.appendChild(successMessage);
+}
+
 function hideElement(id) {
   const element = document.getElementById(id);
   if (element) {
-      element.classList.remove('show');
-      setTimeout(() => {
-          element.style.display = 'none';
-      }, 300);
+    element.style.display = 'none'; // Oculta instantaneamente
   }
 }
 
 function showElement(id) {
   const element = document.getElementById(id);
   if (element) {
-      element.style.display = 'block';
-      setTimeout(() => {
-          element.classList.add('show');
-      }, 0);
+    element.style.display = 'block';
+    element.style.opacity = '0'; // Começa com opacidade 0
+
+    setTimeout(() => {
+      element.style.opacity = '1'; // Aplica a transição de fade in
+    }, 150);
   }
 }
 
 function setButtonText(id, text) {
   const button = document.getElementById(id);
   if (button) {
-      button.innerText = text;
+    button.innerText = text;
   }
 }
 
 function smoothScrollTo(id) {
   const element = document.getElementById(id);
   if (element) {
-      element.scrollIntoView({ behavior: 'smooth' });
+    element.scrollIntoView({
+      behavior: 'smooth',
+      block: 'start'
+    });
   }
 }
 
-function validateCurrentSection() {
-  const currentQuestionInputs = document.querySelectorAll(`#${currentSection} input[type="radio"]:checked`);
-  const requiredQuestions = document.querySelectorAll(`#${currentSection} input[type="radio"][required]`);
-  return currentQuestionInputs.length === requiredQuestions.length;
+
+function finishForm() {
+  // Show the success message
+  const successMessage = document.getElementById('successMessage');
+  if (successMessage) {
+    successMessage.style.display = 'block';
+  }
+
+  // Delay the reset by 2 seconds
+  setTimeout(function() {
+    // Reset the form to its initial state
+    document.getElementById('dataForm').reset();
+
+    // Hide the success message
+    if (successMessage) {
+      successMessage.style.display = 'none';
+    }
+
+    // Show the initial form section
+    currentSection = 'form';
+    hideElement('questions1');
+    hideElement('questions2');
+    hideElement('questions3');
+    hideElement('questions4');
+    hideElement('questions5');
+    hideElement('questions6');
+    hideElement('submitSection');
+    showElement('dataForm');
+  }, 2000); // 2 seconds delay
 }
 
-function displaySuccessMessage() {
-  const successMessage = document.createElement('div');
-  successMessage.innerHTML = '<h2>Dados coletados com sucesso!</h2>';
-  document.getElementById('submitSection').appendChild(successMessage);
-}
 
-function showFinishButton() {
-  document.getElementById('finishButton').style.display = 'block';
-}
-
-// Mascara telefone
+// Máscara para o telefone
 $(document).ready(function () {
   $('#phone').inputmask('(99) 99999-9999');
 });
-
-// Backend(JAVA)
-function submitData() {
-  const currentQuestionInputs = document.querySelectorAll(`#${currentSection} input[type="radio"]:checked`);
-  const requiredQuestions = document.querySelectorAll(`#${currentSection} input[type="radio"][required]`);
-
-  if (currentQuestionInputs.length !== requiredQuestions.length) {
-      alert('Por favor, responda a todas as perguntas.');
-      return;
-  }
-
-  const formData = {
-      question1: $('input[name="question1"]:checked').val(),
-      question2: $('input[name="question2"]:checked').val(),
-      question3: $('input[name="question3"]:checked').val(),
-      question4: $('input[name="question4"]:checked').val(),
-      question5: $('input[name="question5"]:checked').val(),
-      question6: $('input[name="question6"]:checked').val(),
-      question7: $('input[name="question7"]:checked').val(),
-      question8: $('input[name="question8"]:checked').val(),
-      question9: $('input[name="question9"]:checked').val(),
-      question10: $('input[name="question10"]:checked').val(),
-      question11: $('input[name="question11"]:checked').val()
-  };
-
-  // Exemplo de URL para enviar os dados para o backend (ajuste conforme necessário)
-  const url = 'http://exemplo.com/enviar-dados';
-
-  // Envia os dados para o backend usando AJAX
-  $.ajax({
-      type: 'POST',
-      url: url,
-      data: formData,
-      success: function (response) {
-          // Se a requisição for bem-sucedida, exiba a mensagem de sucesso
-          displaySuccessMessage();
-      },
-      error: function (error) {
-          console.error('Erro ao enviar os dados:', error);
-      }
-  });
-}
