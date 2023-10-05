@@ -168,3 +168,36 @@ function submitData() {
       }
   });
 }
+
+
+   const tristeRadio = document.getElementById('triste-radio');
+   const novoInput = document.getElementById('quest1');
+   tristeRadio.addEventListener('change', function () {
+       if (tristeRadio.checked) {
+           novoInput.style.display = 'block';
+       } else {
+           novoInput.style.display = 'none';
+       }
+   });
+
+
+   const quest2 = document.getElementById('irritado');
+   const newQuest2 = document.getElementById('quest2');
+   quest2.addEventListener('change', function () {
+       if (quest2.checked) {
+          newQuest2.style.display = 'block';
+       } else {
+          newQuest2.style.display = 'none';
+       }
+   });
+
+
+   const quest3 = document.getElementById('sono');
+   const newQuest3 = document.getElementById('quest3');
+   quest3.addEventListener('change', function () {
+       if (quest3.checked) {
+          newQuest3.style.display = 'block';
+       } else {
+          newQuest3.style.display = 'none';
+       }
+   });

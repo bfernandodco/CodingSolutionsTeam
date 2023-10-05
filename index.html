@@ -68,52 +68,123 @@
         </form>
         <div class="questions-section" id="questions1">
           <h2>Perguntas sobre Saúde Mental e Sociais (1/4):</h2>
-          <label for="question1">Você se sente...?</label>
+          <label for="question1"><span>Você se sente...?</span></label>
           <div class="options">
             <label>
-              <input type="radio" name="question1" value="Feliz"> Feliz
-            </label>
-            <label>
-              <input type="radio" name="question1" value="Triste"> Triste
-            </label>
-            <label>
-              <input type="radio" name="question1" value="Indiferente"> Indiferente
-            </label>
-            <label>
-              <input type="radio" name="question1" value="Não sei"> Não sei
-            </label>
+              <input type="radio" name="question1" value="Feliz"> 
+              <span><img src="https://images.vexels.com/media/users/3/134789/isolated/preview/aa4c5ca0e2a83abbf167e49c8a50e834-icone-de-emoticon-emoji-de-sorriso-feliz.png" style="width: 50px; height: 50px;"></span>
+          </label>
+          <label>
+              <input type="radio" name="question1" value="Triste" id="triste-radio">
+              <span><img src="https://images.vexels.com/media/users/3/134744/isolated/preview/8906aaa653821355bcfaa459bb92972c-emoji-triste-amarelo-emoji.png"></span>
+          </label>
+      
+          <!-- Classificação da tristeza -->
+          <div class="quest1" id="quest1">
+            <h4>Qual o grau de tristeza?</h4>
+
+            <div>
+              <div class="st">
+                <input class="radio" type="radio" name="opcao" id="opcao1" value="1">
+                <label for="opcao1" class="radio-button">😌</label>
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="opcao" id="opcao2" value="2">
+                <label class="radio" for="opcao2" class="radio-button">🥱</label>  
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="opcao" id="opcao2" value="3">
+                <label class="radio" for="opcao2" class="radio-button">😴</label>  
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="opcao" id="opcao2" value="4">
+                <label class="radio" for="opcao2" class="radio-button">😵‍💫</label>  
+              </div>
+            </div>
+          </div>
 
           </div>
-          <label for="question2">Você se sente...?</label>
-          <div class="options">
-            <label>
-              <input type="radio" name="question2" value="Feliz"> Feliz
-            </label>
-            <label>
-              <input type="radio" name="question2" value="Irritado"> Irritado
-            </label>
-            <label>
-              <input type="radio" name="question2" value="Indiferente"> Indiferente
-            </label>
-            <label>
-              <input type="radio" name="question2" value="Não sei"> Não sei
-            </label>
 
-          </div>
-          <label for="question3">Você sente dificuldade para dormir?</label>
+          <label for="question2"><span>Você se sente...?</span></label>
           <div class="options">
             <label>
-              <input type="radio" name="question3" value="Sem sono"> Sem sono
+              <input type="radio" name="question2" value="Feliz">
+              <span><img src="https://images.vexels.com/media/users/3/134789/isolated/preview/aa4c5ca0e2a83abbf167e49c8a50e834-icone-de-emoticon-emoji-de-sorriso-feliz.png" style="width: 50px; height: 50px;"></span>
             </label>
             <label>
-              <input type="radio" name="question3" value="Com sono"> Com sono
+              <input type="radio" name="question2" value="Irritado" id="irritado">
+              <span><img src="https://cdn.icon-icons.com/icons2/2000/PNG/512/angry_sad_unhappy_icon_123389.png">
             </label>
-            <label>
-              <input type="radio" name="question3" value="Indiferente"> Indiferente
-            </label>
-            <label>
-              <input type="radio" name="question3" value="Não sei"> Não sei
-            </label>
+          </div>
+          
+          <!-- Classificaão feliz/irritado -->
+          <div class="quest2" id="quest2">
+            <h4>Quão se sente irritado?</h4>
+
+            <div>
+              <div class="st">
+                <input class="radio" type="radio" name="irritado" id="opcao1" value="1">
+                <label for="opcao1" class="radio-button">😌</label>
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="irritado" id="opcao2" value="2">
+                <label class="radio" for="opcao2" class="radio-button">🥱</label>  
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="irritado" id="opcao2" value="3">
+                <label class="radio" for="opcao2" class="radio-button">😴</label>  
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="irritado" id="opcao2" value="4">
+                <label class="radio" for="opcao2" class="radio-button">😵‍💫</label>  
+              </div>
+            </div>
+          </div>
+
+          <label for="question3"><span>Você sente dificuldade para dormir?</span></label>
+            <div class="options">
+              <label>
+                <input type="radio" name="question3" value="Sem sono">
+                <span><img src=""></span>
+              </label>
+
+              <label>
+                <input type="radio" name="question3" value="Com sono" id="sono">
+                <span><img src=""></span>
+              </label>              
+            </div>
+
+            <!-- Classificaão feliz/irritado -->
+          <div class="quest3" id="quest3">
+            <h4>Quão sono você sente?</h4>
+
+            <div>
+              <div class="st">
+                <input class="radio" type="radio" name="sono" id="opcao1" value="1">
+                <label for="opcao1" class="radio-button">😌</label>
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="sono" id="opcao2" value="2">
+                <label class="radio" for="opcao2" class="radio-button">🥱</label>  
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="sono" id="opcao2" value="3">
+                <label class="radio" for="opcao2" class="radio-button">😴</label>  
+              </div>
+
+              <div class="st">
+                <input class="radio" type="radio" name="sono" id="opcao2" value="4">
+                <label class="radio" for="opcao2" class="radio-button">😵‍💫</label>  
+              </div>
+            </div>
           </div>
 
           <button id="backButtonquestions1" onclick="showPreviousSection('questions1')">Voltar</button>
